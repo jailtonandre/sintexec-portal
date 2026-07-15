@@ -55,6 +55,18 @@ sintexec-portal/
 └── examples/     Referências auxiliares do ambiente
 ```
 
+## Gerenciador de pacotes
+
+Este projeto utiliza **npm**.
+
+Todos os comandos deste README assumem o uso do npm. Não utilize `pnpm`, `yarn` ou outro gerenciador, pois o projeto mantém suas dependências bloqueadas pelo `package-lock.json`.
+
+```bash
+npm ci
+npm run dev
+npm run build
+```
+
 ## Ambiente de desenvolvimento
 
 ### Requisitos
@@ -65,7 +77,7 @@ sintexec-portal/
 ### Instalação
 
 ```bash
-npm install
+npm ci
 ```
 
 ### Execução local
