@@ -1,4 +1,16 @@
-const stages = ["Edital", "Inteligência", "Análise", "Decisão", "Preparação", "Pregão", "Execução", "Contrato"];
+"use client";
+import { useState } from "react";
+
+const stages = [
+  {name:"Edital", label:"O ponto de partida", text:"O documento é capturado, estruturado e conectado a fontes públicas e ao histórico da empresa.", metrics:[["1.248","sinais extraídos"],["37","requisitos"],["18","prazos"]], result:"Documento contextualizado", score:"100% processado"},
+  {name:"Inteligência", label:"Contexto em movimento", text:"Dados isolados ganham relações: órgão, mercado, histórico, capacidade operacional e estratégia.", metrics:[["8","fontes conectadas"],["126","eventos históricos"],["24","correlações"]], result:"Cenário compreendido", score:"94% confiança"},
+  {name:"Análise", label:"O que importa emerge", text:"Critérios técnicos, comerciais e operacionais revelam aderência, restrições e pontos de atenção.", metrics:[["12","critérios avaliados"],["3","alertas relevantes"],["6","sinais positivos"]], result:"Riscos priorizados", score:"87% aderência"},
+  {name:"Decisão", label:"Momento crítico", text:"Todos os sinais convergem para uma escolha clara: avançar, revisar ou descartar.", metrics:[["12","critérios analisados"],["3","alertas relevantes"],["87%","aderência estimada"]], result:"Avançar", score:"87% aderência"},
+  {name:"Preparação", label:"Estratégia em ação", text:"A decisão se transforma em plano: documentos, responsáveis, prazos e validações ficam visíveis.", metrics:[["14","tarefas mapeadas"],["5","responsáveis"],["2","pendências"]], result:"Plano coordenado", score:"86% concluído"},
+  {name:"Pregão", label:"Consciência na disputa", text:"O contexto preparado acompanha a equipe enquanto a disputa acontece nos portais oficiais.", metrics:[["4","concorrentes"],["3","cenários de margem"],["1","limite aprovado"]], result:"Estratégia disponível", score:"Ao vivo"},
+  {name:"Execução", label:"Do compromisso à entrega", text:"Obrigações, prazos e ocorrências mantêm o contrato conectado à inteligência que originou a decisão.", metrics:[["8","marcos previstos"],["2","riscos monitorados"],["96%","nível de serviço"]], result:"Execução acompanhada", score:"Em curso"},
+  {name:"Contrato", label:"O ciclo aprende", text:"Resultados reais retornam ao sistema e aumentam a qualidade das próximas análises e decisões.", metrics:[["38%","aprendizado acumulado"],["7","lições registradas"],["1","ciclo concluído"]], result:"Inteligência ampliada", score:"Ciclo fechado"},
+];
 const signals = [
   { label: "Aderência ao objeto", value: "92", state: "positive" },
   { label: "Capacidade operacional", value: "84", state: "positive" },
@@ -10,6 +22,8 @@ function Arrow() { return <span aria-hidden="true">↗</span>; }
 function Spark({purple=false}:{purple?:boolean}) { return <span className={purple?"spark purple":"spark"} aria-hidden="true">✦</span>; }
 
 export default function Home() {
+  const [activeStage,setActiveStage]=useState(3);
+  const stage=stages[activeStage];
   return <main>
     <header className="nav-wrap">
       <nav className="nav container" aria-label="Navegação principal">
@@ -66,10 +80,10 @@ export default function Home() {
     <section className="lifecycle" id="ciclo"><div className="container">
       <div className="section-intro light"><span className="kicker">02 / O CICLO COMPLETO</span><h2>Uma oportunidade.<br/><span>Oito momentos decisivos.</span></h2><p>O SintExec conecta o que normalmente está fragmentado e acompanha a inteligência da descoberta ao contrato concluído.</p></div>
       <div className="cycle-experience">
-        <div className="cycle-rail">{stages.map((s,i)=><div className={i===3?"cycle-step active":"cycle-step"} key={s}><span>{String(i+1).padStart(2,"0")}</span><b>{s}</b><i></i></div>)}</div>
+        <div className="cycle-rail" role="tablist" aria-label="Etapas do ciclo">{stages.map((s,i)=><button role="tab" aria-selected={i===activeStage} className={i===activeStage?"cycle-step active":"cycle-step"} key={s.name} onClick={()=>setActiveStage(i)}><span>{String(i+1).padStart(2,"0")}</span><b>{s.name}</b><i></i></button>)}</div>
         <div className="cycle-stage">
-          <div className="stage-context"><span className="stage-number">04</span><small>MOMENTO CRÍTICO</small><h3>Decisão</h3><p>Todos os sinais convergem para uma escolha clara: avançar, revisar ou descartar.</p><div className="stage-metrics"><span><b>12</b><small>critérios analisados</small></span><span><b>3</b><small>alertas relevantes</small></span><span><b>87%</b><small>aderência estimada</small></span></div></div>
-          <div className="stage-visual"><div className="decision-node"><span className="node-source">EDITAL<small>1.248 sinais</small></span><i className="node-line l1"></i><i className="node-line l2"></i><i className="node-line l3"></i><span className="node-center"><Spark/><b>DECISÃO</b><small>motor de contexto</small></span><span className="node-result go"><i></i>Avançar<small>87% aderência</small></span><span className="node-result review"><i></i>Revisar<small>3 alertas</small></span><span className="node-result stop"><i></i>Descartar<small>baixo fit</small></span></div></div>
+          <div className="stage-context" key={`copy-${activeStage}`}><span className="stage-number">{String(activeStage+1).padStart(2,"0")}</span><small>{stage.label.toUpperCase()}</small><h3>{stage.name}</h3><p>{stage.text}</p><div className="stage-metrics">{stage.metrics.map(([v,l])=><span key={l}><b>{v}</b><small>{l}</small></span>)}</div></div>
+          <div className="stage-visual" key={`visual-${activeStage}`}><div className="decision-node"><span className="node-source">ENTRADA<small>{stages[Math.max(0,activeStage-1)].name}</small></span><i className="node-line l1"></i><i className="node-line l2"></i><i className="node-line l3"></i><span className="node-center"><Spark/><b>{stage.name.toUpperCase()}</b><small>inteligência ativa</small></span><span className="node-result go"><i></i>{stage.result}<small>{stage.score}</small></span><span className="node-result review"><i></i>Revisar contexto<small>sinais explicáveis</small></span><span className="node-result stop"><i></i>Próxima etapa<small>{stages[(activeStage+1)%stages.length].name}</small></span></div></div>
         </div>
         <div className="cycle-footer"><span><i></i> O SintExec atua diretamente</span><span><i></i> Integração com portais oficiais</span><p>A inteligência retorna ao início e melhora o próximo ciclo <b>↻</b></p></div>
       </div>
