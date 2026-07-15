@@ -1,98 +1,101 @@
-const cycle = [
-  ["01", "Edital", "A oportunidade nasce"],
-  ["02", "Inteligência", "Os dados ganham contexto"],
-  ["03", "Análise", "Risco e aderência aparecem"],
-  ["04", "Decisão", "A empresa escolhe com clareza"],
-  ["05", "Preparação", "A estratégia vira ação"],
-  ["06", "Pregão", "A disputa acontece"],
-  ["07", "Execução", "O compromisso é entregue"],
-  ["08", "Contrato", "O ciclo gera aprendizado"],
+const stages = ["Edital", "Inteligência", "Análise", "Decisão", "Preparação", "Pregão", "Execução", "Contrato"];
+const signals = [
+  { label: "Aderência ao objeto", value: "92", state: "positive" },
+  { label: "Capacidade operacional", value: "84", state: "positive" },
+  { label: "Risco de prazo", value: "Médio", state: "warning" },
+  { label: "Pressão competitiva", value: "Alta", state: "purple" },
 ];
 
-const principles = [
-  ["01", "Inteligência antes da execução", "Antes de mobilizar pessoas, fornecedores e capital, é preciso saber se a oportunidade faz sentido."],
-  ["02", "Dados com contexto", "Informação isolada não orienta. O contexto revela relevância, risco e possibilidade."],
-  ["03", "Indicadores que orientam", "Menos ruído, mais sinais que ajudam sua equipe a chegar a uma decisão."],
-  ["04", "Transparência por princípio", "Critérios claros para que cada recomendação possa ser compreendida e discutida."],
-  ["05", "Apoio à decisão humana", "Tecnologia para ampliar a capacidade das pessoas — nunca para substituir seu julgamento."],
-  ["06", "Risco tratado com clareza", "Antecipar restrições e incompatibilidades antes que elas se tornem custo operacional."],
-];
-
-const segments = ["Medicamentos", "Saúde hospitalar", "Construção civil", "Engenharia", "Tecnologia", "Alimentação", "Serviços especializados"];
-
-function Arrow() {
-  return <span aria-hidden="true">↗</span>;
-}
+function Arrow() { return <span aria-hidden="true">↗</span>; }
+function Spark({purple=false}:{purple?:boolean}) { return <span className={purple?"spark purple":"spark"} aria-hidden="true">✦</span>; }
 
 export default function Home() {
-  return (
-    <main>
-      <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="SintExec — início"><span className="brand-mark">S</span><span>SintExec</span></a>
-        <nav className="desktop-nav" aria-label="Navegação principal">
-          <a href="#visao">Visão</a><a href="#ciclo">Como pensamos</a><a href="#inteligencia">Plataforma</a><a href="#principios">Princípios</a>
-        </nav>
-        <a className="header-action" href="#conheca">Acessar plataforma <Arrow /></a>
-        <details className="mobile-menu"><summary aria-label="Abrir menu">Menu</summary><nav><a href="#visao">Visão</a><a href="#ciclo">Como pensamos</a><a href="#inteligencia">Plataforma</a><a href="#principios">Princípios</a></nav></details>
-      </header>
+  return <main>
+    <header className="nav-wrap">
+      <nav className="nav container" aria-label="Navegação principal">
+        <a className="logo" href="#inicio"><span className="logo-symbol"><i></i><i></i></span>SintExec</a>
+        <div className="nav-links"><a href="#plataforma">Plataforma</a><a href="#ciclo">Ciclo da oportunidade</a><a href="#inteligencia">Inteligência</a><a href="#principios">Princípios</a></div>
+        <a className="nav-cta" href="#contato">Conheça a plataforma <Arrow /></a>
+      </nav>
+    </header>
 
-      <section className="hero shell" id="inicio">
-        <div className="eyebrow"><span></span> Inteligência em Licitações</div>
-        <h1>Decidir melhor<br />muda <em>tudo.</em></h1>
-        <div className="hero-bottom">
-          <p>Transformamos dados em decisões durante todo o ciclo da oportunidade pública.</p>
-          <div className="hero-actions"><a className="button primary" href="#inteligencia">Conheça a plataforma <Arrow /></a><a className="button text" href="#manifesto">Leia o manifesto <span aria-hidden="true">↓</span></a></div>
-        </div>
-        <div className="signal-panel" aria-label="Representação conceitual da Central de Inteligência">
-          <div className="signal-top"><span>Central de Inteligência</span><span className="live"><i></i> Análise em contexto</span></div>
-          <div className="signal-grid">
-            <div className="opportunity"><span className="micro">OPORTUNIDADE / 02384</span><strong>Aderência estratégica</strong><div className="score"><span>84</span><small>/ 100</small></div><div className="meter"><i></i></div><p>Compatibilidade elevada com o perfil operacional da empresa.</p></div>
-            <div className="signals"><span className="micro">SINAIS PARA DECISÃO</span><div><i className="positive">+</i><span><b>Capacidade técnica</b><small>Histórico compatível</small></span></div><div><i className="attention">!</i><span><b>Prazo de entrega</b><small>Requer validação</small></span></div><div><i className="positive">+</i><span><b>Margem estimada</b><small>Dentro da estratégia</small></span></div></div>
+    <section className="hero container" id="inicio">
+      <div className="hero-copy">
+        <div className="category"><Spark/> Inteligência em Licitações</div>
+        <h1>Veja antes.<br/><span>Decida melhor.</span></h1>
+        <p>Uma Central de Inteligência para transformar dados públicos em contexto, sinais e decisões durante todo o ciclo da oportunidade.</p>
+        <div className="hero-actions"><a className="button solid" href="#plataforma">Conheça a plataforma <Arrow/></a><a className="button ghost" href="#ciclo"><span className="play">▶</span> Veja como funciona</a></div>
+        <div className="hero-proofs"><span><i>✓</i> Dados com contexto</span><span><i>✓</i> Decisão assistida</span><span><i>✓</i> Ciclo completo</span></div>
+      </div>
+      <div className="hero-product" aria-label="Composição conceitual da Central de Inteligência">
+        <div className="product-glow"></div>
+        <div className="app-window">
+          <div className="app-bar"><div className="app-brand"><span className="logo-symbol small"><i></i><i></i></span> Central de Inteligência</div><div className="app-actions"><span>⌕</span><span>?</span><b>MR</b></div></div>
+          <div className="app-body">
+            <aside><span className="aside-label">VISÃO GERAL</span><i className="selected">⌁</i><i>◇</i><i>◫</i><i>◎</i><i>⌘</i><span className="aside-bottom">⚙</span></aside>
+            <div className="workspace">
+              <div className="workspace-head"><div><small>OPORTUNIDADE / 2026-0187</small><h3>Aquisição de medicamentos hospitalares</h3></div><span className="status"><i></i> Em análise</span></div>
+              <div className="decision-row">
+                <div className="decision-score"><div className="ring"><span>87</span><small>/100</small></div><div><small>ÍNDICE DE ADERÊNCIA</small><strong>Oportunidade favorável</strong><p>6 de 8 sinais compatíveis com o perfil da empresa.</p></div></div>
+                <div className="decision-action"><Spark/><small>PRÓXIMA MELHOR AÇÃO</small><strong>Avançar para análise técnica</strong><button>Revisar sinais <Arrow/></button></div>
+              </div>
+              <div className="signal-table"><div className="table-head"><span>Sinais para decisão</span><span>Resultado</span></div>{signals.map(s=><div className="signal-row" key={s.label}><span><i className={s.state}></i>{s.label}</span><b>{s.value}</b></div>)}</div>
+            </div>
           </div>
         </div>
-      </section>
+        <div className="float-card activity"><span className="pulse"></span><div><small>NOVO SINAL DETECTADO</small><strong>Prazo de entrega incompatível</strong></div></div>
+        <div className="float-card confidence"><Spark purple/><div><small>CONFIANÇA DA ANÁLISE</small><strong>94%</strong></div><span className="mini-bars"><i></i><i></i><i></i><i></i></span></div>
+        <span className="concept-label">Visualização conceitual do produto</span>
+      </div>
+    </section>
 
-      <section className="question shell" id="visao">
-        <span className="section-index">01 — UMA PERGUNTA NECESSÁRIA</span>
-        <h2>Sua empresa realmente precisa analisar <em>todos</em> os editais?</h2>
-        <div className="question-copy"><p>Volume não é oportunidade. Cada edital analisado mobiliza uma estrutura invisível antes mesmo de qualquer decisão.</p><p>Tempo, equipe, fornecedores, capital e energia operacional são recursos finitos. A inteligência começa ao escolher onde eles não devem ser usados.</p></div>
-        <div className="resource-line" aria-label="Recursos consumidos por uma oportunidade"><span>Tempo</span><span>Equipe</span><span>Fornecedores</span><span>Capital</span><span>Energia operacional</span></div>
-      </section>
+    <section className="trust-strip"><div className="container"><span>UMA NOVA CAMADA ENTRE O EDITAL E A DECISÃO</span><div><b>Contexto</b><i></i><b>Critério</b><i></i><b>Clareza</b><i></i><b>Inteligência</b></div></div></section>
 
-      <section className="cost">
-        <div className="shell cost-grid"><div><span className="section-index light">02 — O CUSTO INVISÍVEL</span><h2>Perder um pregão custa.<br /><em>Escolher o pregão errado custa mais.</em></h2></div><div className="cost-statement"><p>O verdadeiro prejuízo começa muito antes do lance.</p><div className="cost-flow"><span>Horas de análise</span><i>+</i><span>Mobilização da equipe</span><i>+</i><span>Capital comprometido</span><i>=</i><strong>Decisão cara</strong></div><p className="muted">O SintExec ajuda a tornar visível o que normalmente só aparece depois.</p></div></div>
-      </section>
-
-      <section className="manifesto shell" id="manifesto">
-        <span className="section-index">03 — MANIFESTO</span>
-        <blockquote>“Empresas não precisam de mais editais.<br />Precisam de <em>melhores decisões.</em>”</blockquote>
-        <div className="manifesto-foot"><p>Informação é abundante. Clareza, não. Acreditamos que cada oportunidade pública deve ser compreendida antes de ser perseguida — com contexto, critério e intenção.</p><a className="button outline" href="#ciclo">Continue a leitura <Arrow /></a></div>
-      </section>
-
-      <section className="thinking" id="ciclo">
-        <div className="shell"><div className="section-heading"><div><span className="section-index">04 — COMO O SINTEXEC PENSA</span><h2>Uma licitação não é um evento.<br /><em>É um ciclo de decisões.</em></h2></div><p>Do primeiro dado ao contrato concluído, cada etapa influencia a próxima. A inteligência conecta o ciclo inteiro.</p></div>
-          <div className="cycle">{cycle.map(([n,title,desc],i)=><article className={i===3?"active":""} key={title}><span>{n}</span><div><h3>{title}</h3><p>{desc}</p></div>{i<cycle.length-1&&<b aria-hidden="true">→</b>}</article>)}</div>
-          <p className="cycle-note"><span></span> A disputa eletrônica acontece nos portais oficiais. O SintExec prepara a inteligência antes e acompanha o contexto depois.</p>
+    <section className="problem container" id="plataforma">
+      <div className="section-intro"><span className="kicker">01 / DECISÃO ANTES DA EXECUÇÃO</span><h2>Nem toda oportunidade<br/>merece virar <span>operação.</span></h2><p>O maior custo não está em perder um pregão. Está em mobilizar recursos para uma oportunidade que nunca deveria ter avançado.</p></div>
+      <div className="decision-engine">
+        <div className="engine-toolbar"><span><Spark/> SintExec Decision Engine</span><span>Oportunidade 2026-0187 · análise atualizada agora</span><button>•••</button></div>
+        <div className="engine-grid">
+          <div className="source-card"><small>DADOS DE ENTRADA</small><h3>Um edital.<br/>Milhares de sinais.</h3><div className="data-stack"><span><i>01</i>Objeto e especificações<b>1.248</b></span><span><i>02</i>Requisitos técnicos<b>37</b></span><span><i>03</i>Prazos e condições<b>18</b></span><span><i>04</i>Histórico do órgão<b>126</b></span></div></div>
+          <div className="processing-card"><div className="processing-orbit"><span className="core"><Spark/><b>SintExec</b><small>Inteligência</small></span><i className="orbit o1"></i><i className="orbit o2"></i><i className="dot d1"></i><i className="dot d2"></i><i className="dot d3"></i></div><div className="process-labels"><span>Normalização</span><span>Contextualização</span><span>Correlação</span><span>Priorização</span></div></div>
+          <div className="output-card"><small>DECISÃO ASSISTIDA</small><div className="outcome"><span>87</span><div><b>Avançar</b><small>Alta aderência</small></div></div><div className="outcome-lines"><span><i style={{width:"92%"}}></i></span><span><i style={{width:"84%"}}></i></span><span><i className="violet" style={{width:"68%"}}></i></span></div><p>Oportunidade compatível com a capacidade técnica e estratégia comercial.</p><button>Ver racional da decisão <Arrow/></button></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="intelligence shell" id="inteligencia">
-        <div className="section-heading"><div><span className="section-index">05 — CENTRAL DE INTELIGÊNCIA</span><h2>Do dado disperso<br />à <em>decisão possível.</em></h2></div><p>Um ambiente criado para organizar sinais, revelar contexto e apoiar a decisão da sua equipe.</p></div>
-        <div className="product-stage"><div className="product-placeholder"><span>ESPAÇO RESERVADO</span><strong>Uma visão real da Central<br />de Inteligência viverá aqui.</strong><p>Nenhum dashboard fictício. Nenhuma promessa vazia.<br />Apenas o produto, quando estiver pronto para ser visto.</p></div><div className="annotation one"><b>01</b><span>Oportunidades priorizadas<br /><small>pelo que realmente importa</small></span></div><div className="annotation two"><b>02</b><span>Contexto em um só lugar<br /><small>para decidir com confiança</small></span></div></div>
-      </section>
+    <section className="lifecycle" id="ciclo"><div className="container">
+      <div className="section-intro light"><span className="kicker">02 / O CICLO COMPLETO</span><h2>Uma oportunidade.<br/><span>Oito momentos decisivos.</span></h2><p>O SintExec conecta o que normalmente está fragmentado e acompanha a inteligência da descoberta ao contrato concluído.</p></div>
+      <div className="cycle-experience">
+        <div className="cycle-rail">{stages.map((s,i)=><div className={i===3?"cycle-step active":"cycle-step"} key={s}><span>{String(i+1).padStart(2,"0")}</span><b>{s}</b><i></i></div>)}</div>
+        <div className="cycle-stage">
+          <div className="stage-context"><span className="stage-number">04</span><small>MOMENTO CRÍTICO</small><h3>Decisão</h3><p>Todos os sinais convergem para uma escolha clara: avançar, revisar ou descartar.</p><div className="stage-metrics"><span><b>12</b><small>critérios analisados</small></span><span><b>3</b><small>alertas relevantes</small></span><span><b>87%</b><small>aderência estimada</small></span></div></div>
+          <div className="stage-visual"><div className="decision-node"><span className="node-source">EDITAL<small>1.248 sinais</small></span><i className="node-line l1"></i><i className="node-line l2"></i><i className="node-line l3"></i><span className="node-center"><Spark/><b>DECISÃO</b><small>motor de contexto</small></span><span className="node-result go"><i></i>Avançar<small>87% aderência</small></span><span className="node-result review"><i></i>Revisar<small>3 alertas</small></span><span className="node-result stop"><i></i>Descartar<small>baixo fit</small></span></div></div>
+        </div>
+        <div className="cycle-footer"><span><i></i> O SintExec atua diretamente</span><span><i></i> Integração com portais oficiais</span><p>A inteligência retorna ao início e melhora o próximo ciclo <b>↻</b></p></div>
+      </div>
+    </div></section>
 
-      <section className="principles shell" id="principios">
-        <div className="section-heading"><div><span className="section-index">06 — NOSSOS PRINCÍPIOS</span><h2>Tecnologia com<br /><em>intenção.</em></h2></div><p>Princípios que guiam o produto, as decisões e a forma como enxergamos o mercado público.</p></div>
-        <div className="principles-grid">{principles.map(([n,title,text])=><article key={title}><span>{n}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
-      </section>
+    <section className="intelligence container" id="inteligencia">
+      <div className="section-intro"><span className="kicker">03 / CENTRAL DE INTELIGÊNCIA</span><h2>Dados explicam.<br/><span>Contexto decide.</span></h2><p>Cada tela foi pensada para conduzir a equipe do sinal ao entendimento — e do entendimento à ação.</p></div>
+      <div className="story-grid">
+        <article className="story-card context"><header><span>01</span><div><small>CONTEXTO</small><h3>Entenda antes de analisar.</h3></div></header><div className="ui-panel context-ui"><div className="doc-line"><i>OBJ</i><span><small>Objeto da licitação</small><b>Medicamentos hospitalares — lote único</b></span></div><div className="entity-map"><span className="entity main">Oportunidade</span><span className="entity e1">Órgão<small>Histórico</small></span><span className="entity e2">Mercado<small>Concorrência</small></span><span className="entity e3">Empresa<small>Capacidade</small></span><i></i><i></i><i></i></div></div><p>O edital deixa de ser um documento isolado e passa a existir dentro do cenário real da sua empresa.</p></article>
+        <article className="story-card indicator"><header><span>02</span><div><small>INDICADOR</small><h3>Veja o que merece atenção.</h3></div></header><div className="ui-panel indicator-ui"><div className="risk-head"><span>Risco de execução</span><b>MODERADO</b></div><div className="risk-chart"><span className="chart-fill"></span><i className="mark m1"></i><i className="mark m2"></i><i className="mark m3"></i><label className="chart-tip">Prazo logístico<small>Principal ponto de atenção</small></label></div><div className="risk-labels"><span>Baixo</span><span>Moderado</span><span>Alto</span></div></div><p>Indicadores transformam centenas de variáveis em sinais objetivos para a equipe.</p></article>
+        <article className="story-card result"><header><span>03</span><div><small>RESULTADO</small><h3>Chegue a uma decisão explicável.</h3></div></header><div className="ui-panel result-ui"><span className="result-badge"><Spark/> RECOMENDAÇÃO</span><h4>Avançar com ressalva</h4><p>Validar prazo de entrega com o fornecedor antes de iniciar a preparação.</p><div className="result-actions"><button>Ver justificativa</button><button>Enviar para análise <Arrow/></button></div></div><p>A tecnologia não toma a decisão. Ela torna o caminho até ela claro, rastreável e compartilhável.</p></article>
+      </div>
+    </section>
 
-      <section className="audience"><div className="shell"><span className="section-index light">07 — PARA QUEM DECIDE</span><div className="audience-grid"><h2>Feito para empresas que levam o mercado público <em>a sério.</em></h2><div className="segments">{segments.map(s=><span key={s}>{s}</span>)}</div></div></div></section>
+    <section className="system"><div className="container">
+      <div className="system-head"><div><span className="kicker">04 / UMA PLATAFORMA, MUITAS PERSPECTIVAS</span><h2>Veja a oportunidade<br/>por inteiro.</h2></div><p>Uma camada contínua de inteligência conecta operação, estratégia e aprendizado.</p></div>
+      <div className="bento"><article className="bento-large"><div><span className="feature-icon">⌁</span><small>RADAR DE OPORTUNIDADES</small><h3>Encontre relevância<br/>no meio do ruído.</h3><p>Priorize oportunidades por aderência, risco e valor estratégico.</p></div><div className="radar-ui"><div className="radar-header"><span>Oportunidades prioritárias</span><b>12 encontradas</b></div>{[92,87,79,68].map((v,i)=><div className="radar-row" key={v}><span><i>{i+1}</i><b>{["Medicamentos hospitalares","Serviços de engenharia","Equipamentos de rede","Materiais de consumo"][i]}</b></span><div><em style={{width:`${v}%`}}></em></div><strong>{v}</strong></div>)}</div></article>
+        <article className="bento-small purple"><span className="feature-icon">◇</span><small>ALERTAS CONTEXTUAIS</small><h3>O risco certo,<br/>no momento certo.</h3><div className="alert-stack"><span><i>!</i>Prazo incompatível<small>Impacto alto</small></span><span><i>↗</i>Margem abaixo da meta<small>Revisar preço</small></span></div></article>
+        <article className="bento-small white"><span className="feature-icon">◎</span><small>MEMÓRIA OPERACIONAL</small><h3>Cada contrato melhora<br/>a próxima decisão.</h3><div className="learning"><span>Aprendizado acumulado</span><strong>+38%</strong><div><i></i></div><small>Últimos 12 meses</small></div></article>
+      </div>
+    </div></section>
 
-      <section className="not-section shell"><span className="section-index">08 — CLAREZA TAMBÉM É DIZER O QUE NÃO SOMOS</span><h2>O SintExec não tenta<br />ser tudo.</h2><div className="not-grid"><article><span>Não é</span><h3>um ERP.</h3><p>Não substituímos a gestão da sua operação.</p></article><article><span>Não substitui</span><h3>portais oficiais.</h3><p>A disputa continua onde deve acontecer.</p></article><article><span>Não realiza</span><h3>lances.</h3><p>Preparamos inteligência, não automatizamos a disputa.</p></article><article><span>Não decide</span><h3>pela empresa.</h3><p>A decisão final continua humana.</p></article></div></section>
+    <section className="principles container" id="principios"><div className="principle-copy"><span className="kicker">05 / TECNOLOGIA COM CRITÉRIO</span><h2>Inteligência que amplia a capacidade humana.</h2><p>Sem promessas vagas. Sem decisões opacas. O SintExec organiza a complexidade para que pessoas experientes decidam ainda melhor.</p><a href="#contato">Conheça nossos princípios <Arrow/></a></div><div className="principle-visual"><div className="human-core"><span>DECISÃO<br/><b>HUMANA</b></span></div><div className="principle-tag t1"><Spark/> Dados com contexto</div><div className="principle-tag t2"><Spark purple/> Critérios transparentes</div><div className="principle-tag t3"><span>⌁</span> Risco antecipado</div><div className="principle-tag t4"><span>◎</span> Inteligência contínua</div></div></section>
 
-      <section className="final-cta" id="conheca"><div className="shell"><span className="eyebrow light"><span></span> O próximo ciclo começa com uma escolha</span><h2>Decisões melhores<br />constroem empresas <em>melhores.</em></h2><a className="button white" href="mailto:contato@sintexec.com.br">Conheça a plataforma <Arrow /></a></div></section>
+    <section className="cta" id="contato"><div className="cta-grid"></div><div className="container"><div className="category light"><Spark/> O próximo ciclo começa agora</div><h2>Menos oportunidades<br/>perseguidas.<br/><span>Mais decisões certas.</span></h2><p>Conheça a Central de Inteligência que acompanha sua empresa durante todo o ciclo da oportunidade pública.</p><div><a className="button white" href="mailto:contato@sintexec.com.br">Conheça a plataforma <Arrow/></a><a className="button dark-ghost" href="#ciclo">Explore o ciclo <span>↓</span></a></div></div></section>
 
-      <footer className="footer shell"><a className="brand" href="#inicio"><span className="brand-mark">S</span><span>SintExec</span></a><p>Inteligência em Licitações</p><div><a href="#inicio">Voltar ao início ↑</a><span>© 2026 SintExec</span></div></footer>
-    </main>
-  );
+    <footer><div className="container footer-grid"><a className="logo" href="#inicio"><span className="logo-symbol"><i></i><i></i></span>SintExec</a><span>Inteligência em Licitações</span><div><a href="#plataforma">Plataforma</a><a href="#ciclo">Ciclo</a><a href="#inteligencia">Inteligência</a><a href="#inicio">Topo ↑</a></div></div></footer>
+  </main>;
 }
