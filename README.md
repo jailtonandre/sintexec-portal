@@ -1,98 +1,112 @@
-# vinext-starter
+# SintExec Portal
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+**Portal Institucional Oficial** · **Inteligência em Licitações**
 
-## Prerequisites
+> Transformando dados em decisões durante todo o ciclo da oportunidade pública.
 
-- Node.js `>=22.13.0`
+## Status
 
-## Quick Start
+🟢 **Em desenvolvimento**
+
+Versão atual: `v0.1.0`
+
+## Sobre o projeto
+
+O Portal SintExec é o canal institucional oficial do SintExec, uma Central de Inteligência desenvolvida para apoiar empresas durante todo o ciclo das oportunidades públicas.
+
+O portal apresenta a proposta de valor, a visão, os princípios e as capacidades da plataforma. Sua experiência visual foi concebida para comunicar tecnologia, inteligência, maturidade e confiança ao mercado de licitações públicas.
+
+## Visão
+
+Empresas não precisam apenas de mais informações.
+
+**Precisam de melhores decisões.**
+
+Essa ideia orienta a narrativa do portal e o posicionamento institucional do SintExec.
+
+## Objetivos
+
+- Apresentar institucionalmente o SintExec.
+- Comunicar a proposta de valor da Central de Inteligência.
+- Explicar como a plataforma acompanha o ciclo da oportunidade pública.
+- Demonstrar o produto e sua linguagem tecnológica.
+- Consolidar a presença digital oficial da marca.
+
+## Tecnologias
+
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vinext](https://github.com/cloudflare/vinext)
+- [Vite](https://vite.dev/)
+- CSS customizado
+- Cloudflare como plataforma prevista de publicação
+
+## Estrutura do projeto
+
+```text
+sintexec-portal/
+├── app/          Página, layout e estilos do portal
+├── public/       Identidade visual e arquivos públicos
+├── tests/        Validações automatizadas
+├── worker/       Entrada do ambiente Cloudflare
+├── build/        Integração de build do projeto
+├── db/           Estrutura reservada para persistência futura
+└── examples/     Referências auxiliares do ambiente
+```
+
+## Ambiente de desenvolvimento
+
+### Requisitos
+
+- Node.js `22.13.0` ou superior
+- npm
+
+### Instalação
 
 ```bash
 npm install
+```
+
+### Execução local
+
+```bash
 npm run dev
+```
+
+## Validação e build
+
+```bash
 npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+Outros comandos disponíveis:
 
-## Included Shape
-
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm run lint
+npm test
+npm start
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## Roadmap
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+- [x] Identidade visual inicial
+- [x] Hero institucional
+- [x] Concept Design da Home
+- [ ] Lapidação completa da Home
+- [ ] Páginas institucionais
+- [ ] Estratégia de conteúdo e SEO
+- [ ] Acessibilidade e auditoria de performance
+- [ ] Infraestrutura de publicação
+- [ ] Deploy e homologação
+- [ ] Publicação oficial
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+## Repositório
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+[github.com/jailtonandre/sintexec-portal](https://github.com/jailtonandre/sintexec-portal)
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+## Propriedade e licença
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+Este é um projeto proprietário do SintExec.
 
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+Todos os direitos reservados. O código, a identidade visual, os textos e os demais materiais deste repositório não podem ser copiados, distribuídos ou utilizados sem autorização expressa.
