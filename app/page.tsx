@@ -25,14 +25,6 @@ export default function Home() {
   const [activeStage,setActiveStage]=useState(3);
   const stage=stages[activeStage];
   return <main>
-    <header className="nav-wrap">
-      <nav className="nav container" aria-label="Navegação principal">
-        <a className="logo official-logo" href="#inicio" aria-label="SintExec — início"><img src="/logo-sintexec.png" alt="SintExec" /></a>
-        <div className="nav-links"><a href="/plataforma">Plataforma</a><a href="/tecnologia">Tecnologia</a><a href="/contato">Contato</a><a href="#principios">Princípios</a></div>
-        <a className="nav-cta" href="/plataforma">Conheça a plataforma <Arrow /></a>
-      </nav>
-    </header>
-
     <section className="preview-hero" id="inicio">
       <div className="preview-grid"></div>
       <div className="preview-orbit orbit-one"></div><div className="preview-orbit orbit-two"></div>
@@ -114,6 +106,5 @@ export default function Home() {
 
     <section className="cta" id="contato"><div className="cta-grid"></div><div className="container"><div className="category light"><Spark/> O próximo ciclo começa agora</div><h2>Decisões melhores<br/><span>constroem empresas melhores.</span></h2><p>Conheça a Central de Inteligência que transforma complexidade pública em contexto para decisões mais seguras.</p><div><a className="button white" href="/plataforma">Conheça a plataforma <Arrow/></a><a className="button dark-ghost" href="mailto:contato@sintexec.com.br">Fale com nosso time <Arrow/></a></div></div></section>
 
-    <footer><div className="container footer-grid"><a className="logo official-logo" href="#inicio" aria-label="SintExec — início"><img src="/logo-sintexec.png" alt="SintExec" /></a><span>Inteligência em Licitações</span><div><a href="/plataforma">Plataforma</a><a href="/tecnologia">Tecnologia</a><a href="/contato">Contato</a><a href="#inicio">Topo ↑</a></div></div></footer>
   </main>;
 }

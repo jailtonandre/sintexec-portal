@@ -4,14 +4,6 @@ const explainableFlow = ["Informações", "Critérios", "Indicadores", "Recomend
 
 export default function Tecnologia() {
   return <main className="tech-page" id="top">
-    <header className="tech-nav">
-      <nav className="container" aria-label="Navegação principal">
-        <a className="tech-logo" href="/" aria-label="SintExec — página inicial"><img src="/logo-sintexec.png" alt="SintExec" /></a>
-        <div className="tech-nav-links"><a href="/plataforma">Plataforma</a><a className="active" href="/tecnologia">Tecnologia</a><a href="/contato">Contato</a><a href="/#principios">Princípios</a></div>
-        <a className="tech-nav-cta" href="https://wa.me/5584996631083">Solicitar demonstração <Arrow /></a>
-      </nav>
-    </header>
-
     <section className="tech-hero">
       <div className="tech-grid" aria-hidden="true" />
       <div className="container tech-hero-layout">
@@ -90,6 +82,5 @@ export default function Tecnologia() {
       <div className="container"><span className="tech-kicker">TECNOLOGIA EM CONTEXTO</span><h2>Conheça a tecnologia apoiando decisões reais.</h2><p>Veja como o SintExec organiza informações, preserva contexto e oferece uma base mais confiável para a análise das oportunidades públicas.</p><div><a className="tech-button primary" href="https://wa.me/5584996631083">Solicite uma demonstração <Arrow /></a><a className="tech-button secondary" href="/plataforma">Conheça a plataforma</a></div></div>
     </section>
 
-    <footer className="tech-footer"><div className="container"><a href="/" aria-label="SintExec — página inicial"><img src="/logo-sintexec.png" alt="SintExec" /></a><span>Inteligência em Licitações</span><div><a href="/">Home</a><a href="/plataforma">Plataforma</a><a href="/tecnologia">Tecnologia</a><a href="/contato">Contato</a><a href="#top">Topo ↑</a></div></div></footer>
   </main>;
 }

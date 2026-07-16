@@ -6,6 +6,9 @@ import "./hero-preview.css";
 import "./brand.css";
 import "./hero-final.css";
 import "./home-final.css";
+import "./site-shell.css";
+import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
 const sans=Geist({variable:"--font-sans",subsets:["latin"]});
 const mono=Geist_Mono({variable:"--font-mono",subsets:["latin"]});
 export const metadata:Metadata={
@@ -15,4 +18,4 @@ export const metadata:Metadata={
   openGraph:{title:"SintExec — Inteligência em Licitações",description:"Veja antes. Decida melhor.",images:["/og.png"]},
   twitter:{card:"summary_large_image",title:"SintExec — Inteligência em Licitações",description:"Veja antes. Decida melhor.",images:["/og.png"]}
 };
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="pt-BR"><body className={`${sans.variable} ${mono.variable}`}>{children}</body></html>}
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="pt-BR"><body className={`${sans.variable} ${mono.variable}`}><SiteHeader/>{children}<SiteFooter/></body></html>}

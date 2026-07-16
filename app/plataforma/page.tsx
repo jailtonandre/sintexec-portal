@@ -9,12 +9,6 @@ const process = [
 
 export default function Plataforma() {
   return <main className="platform-page" id="top">
-    <header className="platform-nav"><nav className="container" aria-label="Navegação principal">
-      <a className="platform-logo" href="/" aria-label="SintExec — página inicial"><img src="/logo-sintexec.png" alt="SintExec" /></a>
-      <div><a className="active" href="/plataforma">Plataforma</a><a href="/tecnologia">Tecnologia</a><a href="/contato">Contato</a><a href="/#principios">Princípios</a></div>
-      <a className="platform-nav-cta" href="https://wa.me/5584996631083">Solicitar demonstração <Arrow/></a>
-    </nav></header>
-
     <section className="platform-hero"><div className="platform-grid"></div><div className="container platform-hero-layout">
       <div className="platform-hero-copy"><span className="platform-kicker">A PLATAFORMA</span><h1>Inteligência para acompanhar todo o ciclo da oportunidade pública.</h1><p>O SintExec organiza informações, conecta evidências e transforma dados dispersos em contexto operacional para apoiar decisões mais seguras.</p><div className="platform-actions"><a className="platform-button primary" href="#como-funciona">Entenda como funciona <Arrow/></a><a className="platform-button secondary" href="https://wa.me/5584996631083">Solicite uma demonstração</a></div></div>
       <div className="platform-overview" aria-label="Visão conceitual da Central de Inteligência"><header><span>✦ Central de Inteligência</span><small>Oportunidade 2026-0187 · Em análise</small></header><div className="overview-content"><div className="overview-main"><small>PRIORIDADE ATUAL</small><h2>Aquisição de medicamentos hospitalares</h2><div className="overview-index"><span><b>87</b><small>índice consolidado</small></span><div><p><i style={{width:"92%"}}></i><b>Aderência ao objeto</b><strong>92</strong></p><p><i style={{width:"64%"}}></i><b>Capacidade operacional</b><strong>84</strong></p><p><i className="violet" style={{width:"48%"}}></i><b>Risco de prazo</b><strong>Médio</strong></p></div></div></div><aside><small>RECOMENDAÇÃO</small><h3>Avançar com ressalva</h3><p>Validar capacidade logística antes de iniciar a preparação.</p><span>Avaliação humana necessária</span></aside></div><footer><span>Dados organizados</span><i>→</i><span>Contexto aplicado</span><i>→</i><span>Recomendação explicável</span></footer></div>
@@ -30,6 +24,5 @@ export default function Plataforma() {
 
     <section className="platform-final"><div className="platform-grid"></div><div className="container"><span className="platform-kicker">CONHEÇA A PLATAFORMA</span><h2>Conheça o SintExec em funcionamento.</h2><p>A melhor forma de compreender a plataforma é vê-la apoiando decisões reais.</p><div><a className="platform-button primary" href="https://wa.me/5584996631083">Solicite uma demonstração <Arrow/></a><a className="platform-button secondary" href="mailto:contato@sintexec.com.br">Fale com nosso time</a></div></div></section>
 
-    <footer className="platform-footer"><div className="container"><a href="/" aria-label="SintExec — página inicial"><img src="/logo-sintexec.png" alt="SintExec" /></a><span>Inteligência em Licitações</span><div><a href="/">Home</a><a href="/plataforma">Plataforma</a><a href="/tecnologia">Tecnologia</a><a href="/contato">Contato</a><a href="#top">Topo ↑</a></div></div></footer>
   </main>;
 }
