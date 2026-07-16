@@ -28,8 +28,8 @@ export default function Home() {
     <header className="nav-wrap">
       <nav className="nav container" aria-label="Navegação principal">
         <a className="logo official-logo" href="#inicio" aria-label="SintExec — início"><img src="/logo-sintexec.png" alt="SintExec" /></a>
-        <div className="nav-links"><a href="#plataforma">Plataforma</a><a href="#ciclo">Ciclo da oportunidade</a><a href="#inteligencia">Inteligência</a><a href="#principios">Princípios</a></div>
-        <a className="nav-cta" href="#contato">Conheça a plataforma <Arrow /></a>
+        <div className="nav-links"><a href="/plataforma">Plataforma</a><a href="/tecnologia">Tecnologia</a><a href="/contato">Contato</a><a href="#principios">Princípios</a></div>
+        <a className="nav-cta" href="/plataforma">Conheça a plataforma <Arrow /></a>
       </nav>
     </header>
 
@@ -43,7 +43,7 @@ export default function Home() {
           <div className="preview-rule"></div>
           <div className="preview-slogan">Veja antes. <span>Decida melhor.</span></div>
           <p>Uma Central de Inteligência para transformar dados públicos em contexto, sinais e decisões durante todo o ciclo da oportunidade.</p>
-          <div className="preview-actions"><a className="preview-primary" href="#plataforma">Conheça a plataforma <Arrow/></a><a className="preview-secondary" href="#ciclo"><span>▶</span> Veja como funciona</a></div>
+          <div className="preview-actions"><a className="preview-primary" href="/plataforma">Conheça a plataforma <Arrow/></a><a className="preview-secondary" href="#ciclo"><span>▶</span> Veja como funciona</a></div>
           <div className="preview-proofs"><span><i></i> Dados com contexto</span><span><i></i> Decisão assistida</span><span><i></i> Ciclo completo</span></div>
         </div>
         <div className="preview-product" aria-label="Central de Inteligência SintExec">
@@ -108,12 +108,12 @@ export default function Home() {
 
     <section className="audience"><div className="container audience-grid"><div className="audience-copy"><span className="kicker">06 / PARA OPERAÇÕES REAIS</span><h2>Feito para quem precisa escolher melhor, todos os dias.</h2><p>O SintExec atende empresas cuja complexidade não cabe em uma lista de editais.</p><div className="sector-line"><span>Medicamentos e hospitalar</span><span>Construção e engenharia</span><span>Alimentação</span><span>Tecnologia</span><span>Serviços</span></div></div><div className="profile-list">{["Empresas com grande volume de editais","Equipes especializadas em licitações","Gestores que precisam priorizar oportunidades","Operações com múltiplos fornecedores, unidades ou categorias","Empresas estruturando sua atuação no mercado público"].map((item,i)=><div key={item}><span>{String(i+1).padStart(2,"0")}</span><p>{item}</p><i>↗</i></div>)}</div></div></section>
 
-    <section className="clarity container"><div><span className="kicker">TRANSPARÊNCIA DE ESCOPO</span><h2>Inteligência aplicada.<br/>Sem substituir sua operação.</h2></div><div className="clarity-list">{["Não é um ERP","Não substitui os portais oficiais","Não realiza lances","Não toma decisões pela empresa"].map(item=><span key={item}><i>—</i>{item}</span>)}</div></section>
+    <section className="clarity container"><div className="clarity-statement"><span className="kicker">TRANSPARÊNCIA DE ESCOPO</span><h2>Inteligência aplicada.<br/>Sem substituir sua operação.</h2><p>Limites claros tornam a tecnologia mais confiável.</p></div><div className="clarity-list" aria-label="Limites conscientes do produto">{["Não é um ERP","Não substitui os portais oficiais","Não realiza lances","Não toma decisões pela empresa"].map((item,i)=><span key={item}><small>{String(i+1).padStart(2,"0")}</small><b>{item}</b><i>Decisão de produto</i></span>)}</div></section>
 
-    <section className="manifesto"><div className="manifesto-grid"></div><div className="container"><span className="kicker">07 / MANIFESTO SINTEXEC</span><p>Empresas não precisam apenas de mais informações.</p><h2>Precisam de<br/><span>melhores decisões.</span></h2><a href="#manifesto">Leia o Manifesto <Arrow/></a></div></section>
+    <section className="manifesto" id="manifesto"><div className="manifesto-grid"></div><div className="container"><div><span className="kicker">07 / MANIFESTO SINTEXEC</span><h2>Uma visão sobre inteligência, critério e o futuro das oportunidades públicas.</h2></div><a href="#manifesto">Leia o Manifesto <Arrow/></a></div></section>
 
-    <section className="cta" id="contato"><div className="cta-grid"></div><div className="container"><div className="category light"><Spark/> O próximo ciclo começa agora</div><h2>Decisões melhores<br/><span>constroem empresas melhores.</span></h2><p>Conheça a Central de Inteligência que transforma complexidade pública em contexto para decisões mais seguras.</p><div><a className="button white" href="mailto:contato@sintexec.com.br">Conheça a plataforma <Arrow/></a><a className="button dark-ghost" href="#manifesto">Leia o Manifesto <Arrow/></a></div></div></section>
+    <section className="cta" id="contato"><div className="cta-grid"></div><div className="container"><div className="category light"><Spark/> O próximo ciclo começa agora</div><h2>Decisões melhores<br/><span>constroem empresas melhores.</span></h2><p>Conheça a Central de Inteligência que transforma complexidade pública em contexto para decisões mais seguras.</p><div><a className="button white" href="/plataforma">Conheça a plataforma <Arrow/></a><a className="button dark-ghost" href="mailto:contato@sintexec.com.br">Fale com nosso time <Arrow/></a></div></div></section>
 
-    <footer><div className="container footer-grid"><a className="logo official-logo" href="#inicio" aria-label="SintExec — início"><img src="/logo-sintexec.png" alt="SintExec" /></a><span>Inteligência em Licitações</span><div><a href="#plataforma">Plataforma</a><a href="#ciclo">Ciclo</a><a href="#inteligencia">Inteligência</a><a href="#inicio">Topo ↑</a></div></div></footer>
+    <footer><div className="container footer-grid"><a className="logo official-logo" href="#inicio" aria-label="SintExec — início"><img src="/logo-sintexec.png" alt="SintExec" /></a><span>Inteligência em Licitações</span><div><a href="/plataforma">Plataforma</a><a href="/tecnologia">Tecnologia</a><a href="/contato">Contato</a><a href="#inicio">Topo ↑</a></div></div></footer>
   </main>;
 }
