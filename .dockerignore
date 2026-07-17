@@ -5,6 +5,8 @@ dist
 .vinext
 .next
 .wrangler
+.openai/*
+!.openai/hosting.json
 
 *.log
 npm-debug.log*
